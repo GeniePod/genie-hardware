@@ -25,6 +25,7 @@ hardware-class shopping list, not a commerce link sheet.
 
 | Part | Role | Approx USD | Notes |
 | --- | --- | --- | --- |
+| **40-pin GPIO breakout / expansion board** | Wiring sanity | $5-10 | The Jetson 40-pin pins are too tightly spaced to keep loose Dupont jumpers reliable. A passive breakout (Raspberry Pi-style "GPIO header expansion board" works fine on the Jetson) turns it into a labelled terminal block. **Shown in the hero photo.** Strongly recommended even though it's listed as optional. |
 | **ESP32-C6 dev board** | Thread/Matter sidecar | $10-15 | Connects via UART (`/dev/ttyTHS1`). Wires the assistant into a Thread/Matter home fabric. |
 | **HDMI display + cable** | First-boot setup, NoMachine alternative | $0-100 | Headless install via SSH works fine; display only helps for first-flash. |
 | **USB keyboard + mouse** | First-boot setup | $0 | Same — optional. |

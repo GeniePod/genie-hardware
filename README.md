@@ -5,9 +5,7 @@ assistant. This is the physical-side companion to the software
 ([genie-claw](https://github.com/GeniePod/genie-claw)) and the LLM
 runtime ([genie-ai-runtime](https://github.com/GeniePod/genie-ai-runtime)).
 
-![Hero — MVP wiring on a desk](images/hero-mvp.jpg)
-<!-- placeholder: photo of the assembled Jetson + LyraT MVP. Drop the
-     real image at images/hero-mvp.jpg and this caption will resolve. -->
+![Hero — MVP wiring (ESP32-LyraT + Jetson Orin Nano Super + 40-pin breakout)](images/hero-mvp.jpg)
 
 > **Status:** MVP verified end-to-end on Jetson Orin Nano Super + ESP32-LyraT V4.3 (genie-claw alpha.7, 2026-05-13). Custom interface board, PCB, enclosure, and product-design assets in this repo are in early planning.
 
@@ -84,9 +82,7 @@ The currently-shippable build, validated on genie-claw alpha.7:
 
 Optional: ESP32-C6 sidecar for Thread/Matter (+$10-15), upgraded speakers, HDMI display for first-boot. Full BOM in [`mvp/bom.md`](mvp/bom.md), wiring in [`mvp/wiring.md`](mvp/wiring.md).
 
-![MVP — wired schematic placeholder](images/mvp-wiring-schematic.png)
-<!-- placeholder: render of the wire-up between LyraT JP4 and Jetson 40-pin.
-     Will be drawn properly once schematic/interface-board-v0p1 lands. -->
+Pro tip from the hero photo: spend the extra $5-10 on a passive 40-pin GPIO breakout board. The Jetson 40-pin pins are too tightly spaced to hold loose Dupont jumpers reliably; a breakout gives you a labelled terminal block and saves hours of intermittent-connection debugging. A drawn schematic of the wire-up will replace this prose once `schematic/interface-board-v0p1` lands.
 
 ## Bring-up sequence
 

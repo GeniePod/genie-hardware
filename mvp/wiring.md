@@ -4,6 +4,32 @@ Pin-by-pin connections for the alpha.7-verified MVP. Power off everything
 before changing wires; the Jetson 40-pin header is 1.8 V logic only —
 do NOT touch a 5 V ESP32 GPIO to it.
 
+![MVP wiring photo](../images/hero-mvp.jpg)
+
+The photo above shows the canonical wiring used during the alpha.7
+verification: ESP32-LyraT V4.3 (left, USB-powered, status LEDs lit),
+Jetson Orin Nano Super Devkit (top right, with the fan/heatsink stack
+visible), and — critically — a **passive 40-pin GPIO breakout board**
+(lower right) that turns the Jetson's tight 0.1" header into something
+that can hold loose Dupont jumpers without strain. Do not try to wire
+straight into the Jetson 40-pin; use a breakout. It's $5-10 and saves
+hours of debugging intermittent connections.
+
+### Wire-color convention (matches the hero photo)
+
+Not load-bearing, but pick distinct colors per signal so a future
+operator can debug visually without tracing every wire end-to-end.
+The reference build uses:
+
+| Signal | Color in photo |
+| --- | --- |
+| MCLK   | yellow |
+| SCLK   | white |
+| LRCK   | brown |
+| ASDOUT | green |
+| GND    | black |
+| 3V3 (LyraT power, only if needed) | red |
+
 ## ESP32-LyraT V4.3 → Jetson Orin Nano (40-pin header)
 
 The LyraT exposes I2S on its **JP4** header. Wire four lines to the

@@ -1,0 +1,31 @@
+# KiCad
+*-backups/
+*.bak
+*.sch-bak
+*.kicad_prl
+fp-info-cache
+_autosave-*.kicad_pcb
+*.000
+*.dsn
+*.ses
+
+# Fusion 360 / Autodesk
+*.f3z
+*-recovery*.f3d
+
+# Manufacturing outputs that are large and regenerable
+*.zip   # gerber zips — keep individual layers committed, not the zip
+*.7z
+*.tar.gz
+
+# Renders / temp images
+*.tmp.png
+*.psd~
+
+# macOS / Linux / editor droppings
+.DS_Store
+**/.DS_Store
+*.swp
+.idea/
+.vscode/
+Thumbs.db

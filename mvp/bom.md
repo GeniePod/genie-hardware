@@ -40,9 +40,12 @@ hardware-class shopping list, not a commerce link sheet.
 
 ## Notes
 
-- ESP32-LyraT firmware: custom IDF example `lyrat_jp4_passthrough` (in
-  the ai-hpc fork of `espressif/esp-adf`). Flashing instructions live in
-  `setup-checklist.md`.
+- ESP32-LyraT firmware: custom IDF example `lyrat_jp4_passthrough`,
+  proposed for upstream inclusion in
+  [espressif/esp-adf#1607](https://github.com/espressif/esp-adf/issues/1607).
+  Until merged, build it from a local clone of
+  [espressif/esp-adf](https://github.com/espressif/esp-adf). Flashing
+  instructions live in `setup-checklist.md`.
 - Don't substitute the LyraT with a generic USB conference mic for the
   reference build — the half-duplex gate and DFN tuning in genie-claw
   alpha.7 are validated against the LyraT I2S path specifically. USB mics

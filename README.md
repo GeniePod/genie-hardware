@@ -122,7 +122,7 @@ Full setup walkthrough lives in [genie-claw / README](https://github.com/GeniePo
 | [GeniePod/genie-os](https://github.com/GeniePod/genie-os) | Jetson OS / image builds for shipping. |
 | [GeniePod/genie-hub](https://github.com/GeniePod/genie-hub) | Cloud-side coordination (optional). |
 | [GeniePod/genie-app](https://github.com/GeniePod/genie-app) | Companion mobile/desktop client. |
-| [ai-hpc/esp-adf](https://github.com/ai-hpc/esp-adf) | LyraT firmware fork including the `lyrat_jp4_passthrough` example. |
+| [espressif/esp-adf](https://github.com/espressif/esp-adf) — upstream | LyraT firmware framework. The `lyrat_jp4_passthrough` example proposed for upstream inclusion in [issue #1607](https://github.com/espressif/esp-adf/issues/1607); build it from a local clone of espressif/esp-adf for now. |
 
 ## License
 

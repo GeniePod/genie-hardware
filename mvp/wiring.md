@@ -81,8 +81,12 @@ by default.
    ```
    Select **Configure 40-pin header** → enable **i2s2** → save and
    reboot.
-3. Flash the LyraT firmware (`lyrat_jp4_passthrough` example from
-   `ai-hpc/esp-adf`) over its USB-micro-B port.
+3. Flash the LyraT firmware — build the `lyrat_jp4_passthrough` example
+   from a local clone of
+   [espressif/esp-adf](https://github.com/espressif/esp-adf) (proposed
+   for upstream inclusion in
+   [issue #1607](https://github.com/espressif/esp-adf/issues/1607)),
+   then flash via the LyraT's USB-micro-B port.
 4. Run `bash /opt/geniepod/setup-jetson.sh` to install audio init +
    service units.
 5. Verify with `arecord -D plughw:APE,0 -c 2 -r 24000 -f S16_LE -d 3

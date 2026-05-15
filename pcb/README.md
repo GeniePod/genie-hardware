@@ -1,27 +1,27 @@
 # PCB Layouts
 
-Production-grade board layouts, derived from the schematics in
+GeniePod Home V1 board layouts, derived from the schematics in
 [`../schematic/`](../schematic/).
 
 ## Status
 
 `empty` — nothing here yet. The schematics arrive first; the layout
-follows once the interface-board schematic stabilizes.
+follows once the Home V1 interface-board schematic stabilizes.
 
 ## What goes here
 
 ```
 pcb/
 ├── README.md                            (this file)
-├── interface-board-v0p1.kicad_pcb
-├── interface-board-v0p1.gerbers/        (manufacturing output)
-├── interface-board-v0p1.drl             (drill file)
-├── interface-board-v0p1.pos             (pick-and-place)
-├── interface-board-v0p1-bom.csv         (assembly BOM for JLCPCB/PCBWay)
+├── home-v1-interface-board-v0p1.kicad_pcb
+├── home-v1-interface-board-v0p1.gerbers/        (manufacturing output)
+├── home-v1-interface-board-v0p1.drl             (drill file)
+├── home-v1-interface-board-v0p1.pos             (pick-and-place)
+├── home-v1-interface-board-v0p1-bom.csv         (assembly BOM for JLCPCB/PCBWay)
 └── renders/
-    ├── interface-board-v0p1-top.png
-    ├── interface-board-v0p1-bottom.png
-    └── interface-board-v0p1-3d.png
+    ├── home-v1-interface-board-v0p1-top.png
+    ├── home-v1-interface-board-v0p1-bottom.png
+    └── home-v1-interface-board-v0p1-3d.png
 ```
 
 ## Conventions

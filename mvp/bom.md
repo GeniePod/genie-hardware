@@ -1,4 +1,4 @@
-# MVP Bill of Materials
+# GeniePod Home V1 MVP Bill of Materials
 
 Last verified: 2026-05-13. Prices and SKUs drift; treat this as a
 hardware-class shopping list, not a commerce link sheet.

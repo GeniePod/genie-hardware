@@ -1,4 +1,4 @@
-# Enclosure
+# GeniePod Home V1 Enclosure
 
 Mechanical CAD for the physical box that holds the Jetson, mic frontend,
 speaker, and wiring.
@@ -6,24 +6,24 @@ speaker, and wiring.
 ## Status
 
 `empty` — nothing here yet. The first iteration will be a 3D-printable
-"developer kit" enclosure: cosmetic but functional, prints in PLA on a
-hobby printer, no fasteners beyond M3 inserts.
+GeniePod Home V1 MVP enclosure: functional first, printable in PLA on a hobby
+printer, no fasteners beyond M3 inserts.
 
 ## What goes here
 
 ```
 enclosure/
 ├── README.md                            (this file)
-├── developer-kit-v0p1.f3d               (Fusion 360 source)
-├── developer-kit-v0p1.step              (neutral exchange format)
-├── developer-kit-v0p1-top.stl           (ready to slice)
-├── developer-kit-v0p1-bottom.stl
-├── developer-kit-v0p1-mic-grille.stl
-├── developer-kit-v0p1-speaker-grille.stl
+├── home-v1-mvp-enclosure-v0p1.f3d       (Fusion 360 source)
+├── home-v1-mvp-enclosure-v0p1.step      (neutral exchange format)
+├── home-v1-mvp-enclosure-v0p1-top.stl   (ready to slice)
+├── home-v1-mvp-enclosure-v0p1-bottom.stl
+├── home-v1-mvp-enclosure-v0p1-mic-grille.stl
+├── home-v1-mvp-enclosure-v0p1-speaker-grille.stl
 └── renders/
-    ├── developer-kit-v0p1-exploded.png
-    ├── developer-kit-v0p1-section.png
-    └── developer-kit-v0p1-photo.jpg     (printed unit, on a desk)
+    ├── home-v1-mvp-enclosure-v0p1-exploded.png
+    ├── home-v1-mvp-enclosure-v0p1-section.png
+    └── home-v1-mvp-enclosure-v0p1-photo.jpg
 ```
 
 ## Mechanical constraints to honor

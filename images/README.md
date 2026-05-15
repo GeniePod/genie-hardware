@@ -27,6 +27,5 @@ sibling folders' READMEs.
 
 ## Placeholders
 
-Currently empty. The top-level README references images that will land
-here once the MVP is photographed and the workflow diagrams are
-rendered from the prompts in the genie-claw repo.
+`hero-mvp.jpg` is the current GeniePod Home V1 MVP wiring photo. Additional
+diagrams and renders should stay scoped to GeniePod Home V1.

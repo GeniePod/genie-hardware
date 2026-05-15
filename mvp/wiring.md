@@ -1,8 +1,8 @@
-# MVP Wiring
+# GeniePod Home V1 MVP Wiring
 
-Pin-by-pin connections for the alpha.7-verified MVP. Power off everything
-before changing wires; the Jetson 40-pin header is 1.8 V logic only —
-do NOT touch a 5 V ESP32 GPIO to it.
+Pin-by-pin connections for the alpha.7-verified GeniePod Home V1 MVP. Power
+off everything before changing wires; the Jetson 40-pin header is 1.8 V logic
+only — do NOT touch a 5 V ESP32 GPIO to it.
 
 ![MVP wiring photo](../images/hero-mvp.jpg)
 

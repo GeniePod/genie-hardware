@@ -2,7 +2,7 @@
 
 Circuit schematics for any custom interface boards that sit between
 off-the-shelf modules (Jetson carrier, LyraT, ESP32-C6) and integrated
-GenieClaw hardware.
+GeniePod Home V1 hardware.
 
 ## Status
 
@@ -10,7 +10,7 @@ GenieClaw hardware.
 [MVP](../mvp/) uses board-to-board jumper wiring straight off the Jetson
 40-pin header. The first scheduled custom board is:
 
-1. **interface-board v0.1** — small breakout that:
+1. **home-v1-interface-board v0.1** — small breakout that:
    - Routes Jetson 40-pin I2S2 to a JST-PH connector to the LyraT JP4
      (so the cable is captive and labelled instead of loose Dupont
      jumpers).
@@ -22,8 +22,8 @@ When that lands, this folder will hold:
 ```
 schematic/
 ├── README.md                  (this file)
-├── interface-board-v0p1.kicad_sch
-├── interface-board-v0p1.pdf   (rendered PDF for non-KiCad readers)
+├── home-v1-interface-board-v0p1.kicad_sch
+├── home-v1-interface-board-v0p1.pdf   (rendered PDF for non-KiCad readers)
 └── reference/
     ├── lyrat-v4.3-reference.pdf   (Espressif's published schematic for
     │                               reference / pin numbering)

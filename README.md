@@ -1,43 +1,51 @@
 # genie-hardware
 
-Open hardware reference designs for **GenieClaw**, a local home AI
-assistant. This is the physical-side companion to the software
-([genie-claw](https://github.com/GeniePod/genie-claw)) and the LLM
-runtime ([genie-ai-runtime](https://github.com/GeniePod/genie-ai-runtime)).
+Hardware documentation for **GeniePod Home V1**.
 
-![Hero — MVP wiring (ESP32-LyraT + Jetson Orin Nano Super + 40-pin breakout)](images/hero-mvp.jpg)
+Current status: **MVP testing**. The working reference build uses
+off-the-shelf development boards, hand wiring, and the current GeniePod
+software stack. Custom PCB, enclosure, and product-design assets are planned,
+but they are not the source of truth yet.
 
-> **Status:** MVP verified end-to-end on Jetson Orin Nano Super + ESP32-LyraT V4.3 (genie-claw alpha.7, 2026-05-13). Custom interface board, PCB, enclosure, and product-design assets in this repo are in early planning.
+![Hero — GeniePod Home V1 MVP wiring](images/hero-mvp.jpg)
 
-## What this repo is for
+> **Verified MVP:** Jetson Orin Nano Super + ESP32-LyraT V4.3, tested with
+> `genie-claw` alpha.7 on 2026-05-13.
 
-Three things, in this order of maturity:
+## Scope
 
-1. **MVP — documented, working today.** Take off-the-shelf boards, wire them per [`mvp/wiring.md`](mvp/wiring.md), flash one ESP32 firmware, run one setup script. You have a working assistant in an afternoon.
-2. **Custom interface board — schematics + PCB layout (planned).** Replace the loose jumper wires with a tidy purpose-built board so the MVP can move from "hack on the desk" to "fits in a case."
-3. **Productizable build — enclosure CAD + industrial design (planned).** A 3D-printable developer-kit enclosure, then a manufacturable consumer enclosure with a coherent design language.
+This repo is only about **GeniePod Home V1** hardware.
 
-Everything here is licensed [**CERN-OHL-S v2**](LICENSE.md) (Strongly Reciprocal). Make whatever you want; share your modifications back under the same license.
+It currently documents:
 
-## System at a glance
+1. **MVP testing build** — the board-level setup that works today.
+2. **Home V1 interface board** — planned replacement for loose jumper wiring.
+3. **Home V1 enclosure** — planned developer enclosure around the MVP stack.
+4. **Home V1 product design** — planned industrial-design notes for this device.
+
+It does not define other GeniePod products or future SKUs.
+
+Everything here is licensed [CERN-OHL-S v2](LICENSE.md).
+
+## MVP System
 
 ```mermaid
 flowchart LR
-    subgraph HW["Hardware (this repo)"]
+    subgraph HW["GeniePod Home V1 MVP hardware"]
         LyraT["ESP32-LyraT V4.3<br/>ES8388 + onboard mics<br/>I2S slave"]
-        ORIN["Jetson Orin Nano Super<br/>8 GB iGPU, 67 TOPS GPU<br/>SM 8.7"]
+        ORIN["Jetson Orin Nano Super<br/>8 GB, CUDA 12.6<br/>SM 8.7"]
         SPK["USB / 3.5 mm speaker"]
-        C6["ESP32-C6 (optional)<br/>Thread / Matter sidecar"]
+        C6["ESP32-C6 sidecar<br/>optional Thread / Matter test"]
     end
 
-    subgraph SW["Software"]
-        CLAW["genie-claw<br/>(Rust runtime, voice loop,<br/>memory, tools)"]
-        RUNTIME["genie-ai-runtime<br/>(Orin-tuned LLM<br/>inference, C++/CUDA)"]
+    subgraph SW["GeniePod software"]
+        CLAW["genie-claw<br/>voice loop, memory, tools"]
+        RUNTIME["genie-ai-runtime<br/>Orin LLM runtime"]
     end
 
     LyraT -- "I2S (24 kHz S16 stereo)" --> ORIN
     C6 -- "UART /dev/ttyTHS1" --> ORIN
-    ORIN -- "ALSA: aplay" --> SPK
+    ORIN -- "ALSA output" --> SPK
     ORIN --- CLAW
     CLAW -- "HTTP :8080" --> RUNTIME
 
@@ -49,27 +57,20 @@ flowchart LR
     class C6 opt;
 ```
 
-Hardware sits on top of the device-tree overlay; software in the boxes
-on the right is what runs on the Jetson. The fully-rendered architecture
-diagrams (one per subsystem — voice pipeline, LLM runtime, OS bring-up,
-security, ESP32 integration, memory flow) live in
-[genie-claw / doc / workflow / prompt.md](https://github.com/GeniePod/genie-claw/blob/main/doc/workflow/prompt.md);
-drop the rendered PNGs into [`images/`](images/) and link them here.
-
-## Folder map
+## Folder Map
 
 | Folder | Status | What it holds |
 | --- | --- | --- |
-| [**`mvp/`**](mvp/) | working today | BOM, wiring, setup checklist for the off-the-shelf reference build |
-| [**`schematic/`**](schematic/) | planned | KiCad schematics for custom interface boards |
-| [**`pcb/`**](pcb/) | planned | KiCad PCB layouts, Gerbers, fab outputs, renders |
-| [**`enclosure/`**](enclosure/) | planned | Fusion 360 / STEP / STL for cases and grilles |
-| [**`product-design/`**](product-design/) | planned | Industrial design, identity, packaging, unboxing |
-| [`images/`](images/) | populated as photos arrive | Hero shots and rendered diagrams |
+| [`mvp/`](mvp/) | working MVP test build | BOM, wiring, and setup notes for the off-the-shelf reference build |
+| [`schematic/`](schematic/) | planned | KiCad schematics for the Home V1 interface board |
+| [`pcb/`](pcb/) | planned | PCB layouts, Gerbers, fab outputs, and renders |
+| [`enclosure/`](enclosure/) | planned | CAD for the Home V1 MVP/developer enclosure |
+| [`product-design/`](product-design/) | planned | Home V1 industrial-design and packaging notes |
+| [`images/`](images/) | active | MVP photos and repo diagrams |
 
-## MVP at a glance
+## MVP at a Glance
 
-The currently-shippable build, validated on genie-claw alpha.7:
+The current MVP test build:
 
 | Component | Part | Approx USD |
 | --- | --- | --- |
@@ -77,23 +78,25 @@ The currently-shippable build, validated on genie-claw alpha.7:
 | Mic frontend | ESP32-LyraT V4.3 (ES8388 + 3 onboard mics) | $30-40 |
 | Storage | microSD A2 U3 64 GB+ | $15 |
 | Audio out | USB-A headphone or 3.5 mm speaker | $5-30 |
-| Wiring | 40-pin GPIO ribbon + Dupont jumpers (4 I2S wires) | $5 |
-| **Total (core)** | | **~$550** |
+| Wiring | 40-pin GPIO ribbon + Dupont jumpers | $5 |
+| **Total core MVP** | | **~$550** |
 
-Optional: ESP32-C6 sidecar for Thread/Matter (+$10-15), upgraded speakers, HDMI display for first-boot. Full BOM in [`mvp/bom.md`](mvp/bom.md), wiring in [`mvp/wiring.md`](mvp/wiring.md).
+Optional for testing: ESP32-C6 sidecar for Thread/Matter, upgraded speakers,
+and HDMI display for first boot.
 
-Pro tip from the hero photo: spend the extra $5-10 on a passive 40-pin GPIO breakout board. The Jetson 40-pin pins are too tightly spaced to hold loose Dupont jumpers reliably; a breakout gives you a labelled terminal block and saves hours of intermittent-connection debugging. A drawn schematic of the wire-up will replace this prose once `schematic/interface-board-v0p1` lands.
+Full BOM: [`mvp/bom.md`](mvp/bom.md)  
+Wiring: [`mvp/wiring.md`](mvp/wiring.md)
 
-## Bring-up sequence
+## Bring-Up Sequence
 
 ```mermaid
 flowchart TD
-    A[Order BOM] --> B[Install JetPack on SD<br/>flash via NVIDIA SDK Manager]
-    B --> C[First boot, SSH access,<br/>enable I2S2 via jetson-io.py]
+    A[Order MVP BOM] --> B[Install JetPack 6.2.1<br/>L4T R36.4.7, CUDA 12.6]
+    B --> C[First boot and SSH access<br/>enable I2S2 with jetson-io.py]
     C --> D[Flash LyraT<br/>lyrat_jp4_passthrough firmware]
-    D --> E[Wire LyraT JP4 ↔ Jetson 40-pin<br/>4 I2S signals + GND]
-    E --> F["bash /opt/geniepod/setup-jetson.sh<br/>(installs services, downloads models,<br/>wires AHUB routes)"]
-    F --> G["Push to talk → 'Hello, this is testing'<br/>~4 s to first reply (alpha.7)"]
+    D --> E[Wire LyraT JP4 to Jetson 40-pin<br/>I2S signals + GND]
+    E --> F["Run GeniePod setup script<br/>install services, models, AHUB routes"]
+    F --> G["Voice-loop smoke test<br/>push-to-talk response"]
 
     classDef start fill:#10b981,color:#022c22;
     classDef step fill:#f3f4f6,stroke:#9ca3af,color:#111827;
@@ -103,29 +106,32 @@ flowchart TD
     class G done;
 ```
 
-Full setup walkthrough lives in [genie-claw / README](https://github.com/GeniePod/genie-claw#alpha5-verified-deploy-2026-05-11), with the alpha.7 verification numbers in the
-[Alpha.7 Verified Voice Cycle](https://github.com/GeniePod/genie-claw#alpha7-verified-voice-cycle-2026-05-13) section.
+Full software setup lives in the
+[genie-claw README](https://github.com/GeniePod/genie-claw), with the alpha.7
+verification notes in the
+[Alpha.7 Verified Voice Cycle](https://github.com/GeniePod/genie-claw#alpha7-verified-voice-cycle-2026-05-13)
+section.
 
 ## Roadmap
 
-- **Now:** MVP documented, working. Anyone with the BOM can reproduce.
-- **Next (interface-board v0.1):** lift loose jumpers off the desk into a captive connector. Adds ESP32-C6 footprint and audio passthrough on a 2-layer board.
-- **Then (developer-kit enclosure v0.1):** 3D-printable case in PLA, M3 inserts only. Mic-to-speaker spacing ≥ 8 cm so half-duplex / AEC fixes can do their job.
-- **Eventually (consumer enclosure):** manufacturable design, finished surface, packaging, unboxing flow. That's `product-design/`'s job.
+- **Now:** MVP testing hardware documented and reproducible.
+- **Next:** Home V1 interface-board v0.1 to replace loose jumpers with a
+  labelled captive connector.
+- **Then:** 3D-printable Home V1 developer enclosure around the MVP stack.
+- **Later:** manufacturable Home V1 hardware package after the MVP behavior is
+  stable.
 
-## Related repos
+## Related Repos
 
 | Repo | What it is |
 | --- | --- |
-| [GeniePod/genie-claw](https://github.com/GeniePod/genie-claw) | Rust runtime: voice loop, memory, tools, Home Assistant integration. AGPL-3.0. |
-| [GeniePod/genie-ai-runtime](https://github.com/GeniePod/genie-ai-runtime) | Orin-tuned C++/CUDA LLM inference runtime. MIT. |
-| [GeniePod/genie-os](https://github.com/GeniePod/genie-os) | Jetson OS / image builds for shipping. |
-| [GeniePod/genie-hub](https://github.com/GeniePod/genie-hub) | Cloud-side coordination (optional). |
-| [GeniePod/genie-app](https://github.com/GeniePod/genie-app) | Companion mobile/desktop client. |
-| [espressif/esp-adf](https://github.com/espressif/esp-adf) — upstream | LyraT firmware framework. The `lyrat_jp4_passthrough` example proposed for upstream inclusion in [issue #1607](https://github.com/espressif/esp-adf/issues/1607); build it from a local clone of espressif/esp-adf for now. |
+| [GeniePod/genie-claw](https://github.com/GeniePod/genie-claw) | Rust runtime: voice loop, memory, tools, Home Assistant integration. |
+| [GeniePod/genie-ai-runtime](https://github.com/GeniePod/genie-ai-runtime) | Orin-tuned C++/CUDA LLM inference runtime. |
+| [GeniePod/genie-os](https://github.com/GeniePod/genie-os) | Jetson OS and image tooling for the target hardware. |
+| [GeniePod/genie-app](https://github.com/GeniePod/genie-app) | Companion client for setup and device management. |
+| [espressif/esp-adf](https://github.com/espressif/esp-adf) | Upstream LyraT firmware framework. |
 
 ## License
 
-CERN Open Hardware Licence Version 2 — Strongly Reciprocal. See [LICENSE.md](LICENSE.md).
-
-This is the hardware analog of AGPL-3.0: you can build, modify, and sell hardware based on these designs, but if you distribute (or operate as a service) a modified design, you must publish the modifications under the same license. Keeps the hardware lineage open.
+CERN Open Hardware Licence Version 2 — Strongly Reciprocal. See
+[LICENSE.md](LICENSE.md).

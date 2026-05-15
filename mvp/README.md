@@ -1,8 +1,8 @@
-# MVP — Minimum Viable Product
+# GeniePod Home V1 MVP
 
-The current shippable GenieClaw hardware stack, built from off-the-shelf
-boards. Anyone with these parts and the wiring in this folder can have a
-working local home AI assistant in an afternoon.
+The current **GeniePod Home V1** MVP test hardware stack, built from
+off-the-shelf boards. Anyone with these parts and the wiring in this folder can
+reproduce the current board-level test build.
 
 ## What's here
 
@@ -16,8 +16,8 @@ working local home AI assistant in an afternoon.
 - Custom PCB layouts (`../pcb/`).
 - 3D-printable enclosures (`../enclosure/`).
 
-The MVP is intentionally board-level. The repo's other folders graduate
-it to integrated hardware later.
+The MVP is intentionally board-level. The repo's other folders graduate this
+same GeniePod Home V1 hardware path toward an integrated board and enclosure.
 
 ## Status
 

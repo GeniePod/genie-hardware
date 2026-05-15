@@ -7,6 +7,27 @@ off-the-shelf development boards, hand wiring, and the current GeniePod
 software stack. Custom PCB, enclosure, and product-design assets are planned,
 but they are not the source of truth yet.
 
+## Home V1 Target Hardware
+
+GeniePod Home V1 is the first integrated home appliance target. The MVP in
+this repo validates the stack with dev boards first; the custom Home V1
+hardware is expected to consolidate those functions into a purpose-built
+carrier, enclosure, and audio layout.
+
+| Subsystem | Home V1 direction |
+| --- | --- |
+| Compute | Jetson Orin Nano-class SoM running the GeniePod voice stack, LLM runtime, and local services |
+| Audio input | 4 analog microphones in a far-field array, with a dedicated audio ADC/front end and physical mute path |
+| Audio output | 2-speaker playback path for voice responses, alerts, and room audio testing |
+| Storage | Onboard M.2 NVMe SSD for the OS image, models, logs, configuration, and OTA staging |
+| Security | TPM 2.0 security module for device identity and future sealed-storage / disk-encryption flows |
+| Wireless | WiFi and BLE connectivity for setup, local network access, and device management |
+| Thread / Matter | Thread border-router path using a radio co-processor connected to the Jetson host |
+| Status lighting | RGBW LED status system for wake, listening, processing, muted, error, setup, and idle states |
+| Physical controls | Hardware microphone mute, volume controls, and a setup/pairing control |
+| External I/O | USB-C power, Ethernet, and hidden service/debug USB access; no public display output in V1 |
+| Enclosure | Voice-first home form factor with top mic zone, separated speaker path, visible privacy/status cues, and rear/bottom I/O |
+
 ![Hero — GeniePod Home V1 MVP wiring](images/hero-mvp.jpg)
 
 > **Verified MVP:** Jetson Orin Nano Super + ESP32-LyraT V4.3, tested with
